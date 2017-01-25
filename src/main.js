@@ -4,6 +4,13 @@ import Framework from './framework'
 
 import {func1, func2, func3, func4} from './distribution'
 
+var TreeType = {
+  SIN : "Sin",
+  CLASSIC : "Classic",
+  ALIEN : "Alien",
+  PINECONE : "Pinecone"
+}
+
 // called after the scene loads
 function onLoad(framework) {
   var scene = framework.scene;
@@ -39,7 +46,8 @@ function onLoad(framework) {
 
   var settings = {
     treeHeight: 50,
-    leafHeight: 0.1
+    leafHeight: 0.1,
+    treeType: TreeType.SIN
   }
 
   var tree_items = [];
@@ -59,7 +67,15 @@ function onLoad(framework) {
         size: settings.leafHeight
       };
 
-      func1(mesh, params);
+      if(settings.treeType == 'Sin')
+        func1(mesh, params);
+      else if(settings.treeType == 'Classic')
+        func2(mesh, params);
+      else if(settings.treeType == 'Alien')
+        func3(mesh, params);
+      else if(settings.treeType == 'Pinecone')
+        func4(mesh, params);
+
       // func2(mesh, settings);
       // func3(mesh, settings);
       // func4(mesh, settings);
@@ -73,6 +89,7 @@ function onLoad(framework) {
   // more information here: https://workshop.chromeexperiments.com/examples/gui/#1--Basic-Usage
   gui.add(settings, 'treeHeight', 0.1, 100).onChange(buildTree);
   gui.add(settings, 'leafHeight', 0.1, 1).onChange(buildTree);
+  gui.add(settings, 'treeType', [ 'Sin', 'Classic', 'Alien', 'Pinecone' ] ).onChange(buildTree);
 
   buildTree();
 }
