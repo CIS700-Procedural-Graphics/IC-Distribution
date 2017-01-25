@@ -13,7 +13,7 @@ function onLoad(framework) {
   var stats = framework.stats;
 
   // LOOK: the line below is synyatic sugar for the code above. Optional, but I sort of recommend it.
-  // var {scene, camera, renderer, gui, stats} = framework; 
+  // var {scene, camera, renderer, gui, stats} = framework;
 
   // initialize a simple box and material
   var cylinder = new THREE.CylinderGeometry(0.5, 0.5, 1, 32, 32);
@@ -22,7 +22,7 @@ function onLoad(framework) {
 
   var light1 = new THREE.DirectionalLight(0xffffff, 0.8);
   light1.position.set(10, 10, 10);
-  
+
   var light2 = new THREE.DirectionalLight(0xffffff, 0.2);
   light2.position.set(-10, 5, -10);
 
@@ -59,11 +59,11 @@ function onLoad(framework) {
         size: settings.leafHeight
       };
 
-      func1(mesh, params);
-      // func2(mesh, settings);
-      // func3(mesh, settings);
-      // func4(mesh, settings);
-      
+      // func1(mesh, params);
+      // func2(mesh, params);
+      // func3(mesh, params);
+      func4(mesh, params);
+
       scene.add(mesh);
       tree_items.push(mesh);
     }
